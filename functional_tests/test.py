@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time, os
@@ -8,7 +8,7 @@ import time, os
 d = os.path.dirname(__file__)
 driverpath = os.path.join(d, 'chromedriver')
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Chrome(driverpath) #"/home/maxd13/Downloads/chromedriver")
