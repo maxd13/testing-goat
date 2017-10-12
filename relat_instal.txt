@@ -1,0 +1,40 @@
+Fri Oct  6 11:50:29 CDT 2017
+-> Referencia: http://www.obeythetestinggoat.com/book/pre-requisite-installations.html
+-> Veja tambem o relat do projeto TGDB para detalhes sobre a instalacao do PostgreSQL
+mkdir /home/maxd13/Documents/python/django/TDD_with_python
+cd !$
+pip install virtualenv # se ja nao estiver instalado
+pip install virtualenvwrapper # se ja nao estiver instalado (--user pode ser omitido no caso de se estar usando anaconda)
+echo "source virtualenvwrapper.sh" >> ~/.bashrc
+source ~/.bashrc
+
+-> Instalacao do chrome e chromedriver:
+    sudo apt-get install curl # se nao instalado
+    /usr/bin/curl 'https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip' | funzip > /usr/bin/chromedriver
+    chmod +x !$
+    -> baixe o chrome de https://www.google.com/chrome/index.html na pasta ~/Downloads
+    sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb
+
+
+-> Configuracao do projeto:
+    mkvirtualenv --python=python3.6 superlists # (deactivate para desativar, workon superlists para ativar)
+    pip install "django<1.12" "selenium<4"
+    pip install "psycopg2=2.7.3.1"
+
+-> Configuracao do postgresql (como root):
+    su - postgres
+    createdb superlists_db
+    psql
+        GRANT ALL PRIVILEGES ON DATABASE superlists_db TO maxd13;
+        ALTER USER maxd13 CREATEDB;
+
+-> Instalacao do Bootstrap (no diretorio lists):
+    mkdir static
+    cd !$
+    wget -O bootstrap.zip 'https://github.com/twbs/bootstrap/releases/download/v3.3.4/bootstrap-3.3.4-dist.zip'
+    unzip bootstrap.zip
+    mv bootstrap-3.3.4-dist bootstrap
+    rm bootstrap.zip
+
+=Eof=
+
